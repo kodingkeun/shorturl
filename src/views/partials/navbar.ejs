@@ -1,0 +1,20 @@
+<nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark">
+  <a class="navbar-brand mr-auto mr-lg-0" href="/">Shorturl</a>
+</nav>
+
+<div class="nav-scroller bg-white shadow-sm justify-content-center align-items-center">
+    <nav class="nav nav-underline">
+        <a class="nav-link <%= dashboard ? 'active' : ''%>" href="/">Dashboard</a>
+        <a class="nav-link <%= shortens ? 'active' : ''%>" href="/shortens">
+            Shortens
+            <span class="badge badge-pill bg-light align-text-bottom" id="total_shortens"></span>
+        </a>
+        <a class="nav-link <%= about ? 'active' : ''%>" href="/about">About</a>
+        <a class="nav-link <%= community ? 'active' : ''%>" href="/community">Community</a>
+        <a class="nav-link <%= contributors ? 'active' : ''%>" href="/contributors">
+            Contributors
+            <span class="badge badge-pill bg-light align-text-bottom" id="total_contributors"></span>
+        </a>
+        <a class="nav-link" href="#">Fork</a>
+    </nav>
+</div>

@@ -1,0 +1,84 @@
+var express = require('express')
+var fs = require('fs')
+var crypto = require('crypto')
+var router = express.Router()
+
+var { cwd }  = process
+
+var pathDB = (cwd() + '/src/database/database.json')
+var pathContributors = (cwd() + '/src/database/contributors.json')
+var db = fs.readFileSync(pathDB, 'utf-8') || '[]'
+var contributors = fs.readFileSync(pathContributors, 'utf-8') || '[]'
+db = JSON.parse(db)
+contributors = JSON.parse(contributors)
+
+router.get('/', function(req, res, next) {
+    res.status(200).json({
+        message: 'Hello world!'
+    })
+})
+
+router.get('/contributors', function(req, res, next) {
+    res.status(200).json({
+        contributors
+    })
+})
+
+router.post('/url', function(req, res, next) {
+    var { url, custom_key } = req.body
+    var key = crypto.randomBytes(4).toString('hex')
+    if (custom_key) key = custom_key
+    if (!custom_key) custom_key = null
+    if (!url) {
+        res.status(400).json({
+            status: false,
+            message: 'url is required'
+        })
+    }
+    var validate_url = validateUrl({ url: url })
+    if (validate_url) {
+        var redirect_uri = url
+        var result = {
+            key,
+            redirect_uri,
+        }
+
+        var collectKey = db.map(({ key }) => key)
+        if (collectKey.includes(key)) {
+            res.status(400).json({
+                status: false,
+                message: 'key already exists'
+            })
+        } else {
+            saveToDB(result).then(({ data }) => {
+                res.status(200).json({
+                    status: true,
+                    data
+                })
+            })
+        }
+    } else {
+        res.status(400).json({
+            status: false,
+            message: 'missing url'
+        })
+    }
+})
+
+function saveToDB({ key, redirect_uri } = {}) {
+    var data = { key, redirect_uri, count: 0 }
+    db.push(data)
+    fs.writeFileSync(pathDB, JSON.stringify(db))
+    return new Promise(resolve => {
+        resolve({
+            data
+        })
+    })
+}
+
+function validateUrl({ url } = {}) {
+    var regex = /^((ftp|http|https):\/\/)?(www.)?(?!.*(ftp|http|https|www.))[a-zA-Z0-9_-]+(\.[a-zA-Z]+)+((\/)[\w#]+)*(\/\w+\?[a-zA-Z0-9_]+=\w+(&[a-zA-Z0-9_]+=\w+)*)?\/?$/gm
+    return regex.test(url)
+}
+
+module.exports = router

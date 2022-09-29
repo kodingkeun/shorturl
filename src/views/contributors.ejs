@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <%- include('./partials/head') -%>
+    <style>
+        .starter-template {
+            padding: 3rem 1.5rem;
+            text-align: center;
+        }
+        .footer {
+            background-color: #f5f5f5;
+        }
+        .bd-placeholder-img {
+            font-size: 1.125rem;
+            text-anchor: middle;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+        @media (min-width: 768px) {
+            .bd-placeholder-img-lg {
+                 font-size: 3.5rem;
+            }
+        }
+    </style>
+</head>
+<body class="bg-light">
+    <%- include('./partials/navbar', { dashboard: false, shortens: false, about: false, community: false, contributors: true }) -%>
+    <main role="main" class="container">
+        <%- include('./partials/brand') -%>
+        <%- include('./partials/contributors') -%>
+    </main>
+    <%- include('./partials/script') -%>
+</body>
+</html>

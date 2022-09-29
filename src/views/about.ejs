@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <%- include('./partials/head') -%>
+    <style>
+        .starter-template {
+            padding: 3rem 1.5rem;
+            text-align: center;
+        }
+        .footer {
+            background-color: #f5f5f5;
+        }
+        .bd-placeholder-img {
+            font-size: 1.125rem;
+            text-anchor: middle;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+        @media (min-width: 768px) {
+            .bd-placeholder-img-lg {
+                 font-size: 3.5rem;
+            }
+        }
+    </style>
+</head>
+<body class="bg-light">
+    <%- include('./partials/navbar', { dashboard: false, shortens: false, about: true, community: false, contributors: false }) -%>
+    <main role="main" class="container">
+        <%- include('./partials/brand') -%>
+        <div class="jumbotron jumbotron-fluid">
+            <div class="container">
+                <h1 class="display-4">Shorturl</h1>
+                <p class="lead">URL shortening is a technique on the World Wide Web in which a Uniform Resource Locator (URL) may be made substantially shorter and still direct to the required page. This is achieved by using a redirect which links to the web page that has a long URL.</p>
+            </div>
+        </div>
+    </main>
+    <%- include('./partials/script') -%>
+</body>
+</html>
