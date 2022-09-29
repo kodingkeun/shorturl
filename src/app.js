@@ -9,6 +9,8 @@ var webRouter = require('./routes/web')
 var apiRouter = require('./routes/api')
 
 var app = express()
+var PORT = process.env.PORT || 8000
+var server = app.listen(PORT)
 
 app.set('views', path.join(__dirname, 'views'))
 app.set('view engine', 'ejs')
