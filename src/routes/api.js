@@ -28,6 +28,7 @@ router.post('/url', function(req, res, next) {
     var { url, custom_key } = req.body
     var key = crypto.randomBytes(4).toString('hex')
     if (custom_key) key = custom_key
+    if (/\d/g.test(key[0])) key = randomAlphabet()+key
     if (!custom_key) custom_key = null
     if (!url) {
         res.status(400).json({
@@ -35,7 +36,11 @@ router.post('/url', function(req, res, next) {
             message: 'url is required'
         })
     }
+
+    var regex = /^[\d]|\W/g
     var validate_url = validateUrl({ url: url })
+    var validateKey = regex.test(key)
+
     if (validate_url) {
         var redirect_uri = url
         var result = {
@@ -48,6 +53,11 @@ router.post('/url', function(req, res, next) {
             res.status(400).json({
                 status: false,
                 message: 'key already exists'
+            })
+        } else if (validateKey) {
+            res.status(400).json({
+                status: false,
+                message: `missing key`
             })
         } else {
             saveToDB(result).then(({ data }) => {
@@ -79,6 +89,12 @@ function saveToDB({ key, redirect_uri } = {}) {
 function validateUrl({ url } = {}) {
     var regex = /^((ftp|http|https):\/\/)?(www.)?(?!.*(ftp|http|https|www.))[a-zA-Z0-9_-]+(\.[a-zA-Z]+)+((\/)[\w#]+)*(\/\w+\?[a-zA-Z0-9_]+=\w+(&[a-zA-Z0-9_]+=\w+)*)?\/?$/gm
     return regex.test(url)
+}
+
+function randomAlphabet() {
+    var alphabet = 'abcdefghijklmnopqrstuvwxyz'.split('')
+    var random = alphabet[Math.floor(Math.random() * alphabet.length)]
+    return random
 }
 
 module.exports = router
