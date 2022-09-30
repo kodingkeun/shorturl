@@ -41,7 +41,6 @@ router.get('/:key', async function(req, res, next) {
         var { key, redirect_uri } = data
         var uri = redirect_uri
         updateCountUri({ key })
-        res.setHeader('location', redirect_uri)
         res.redirect(301, uri)
     } else {
         res.redirect(301, '/')
