@@ -36,6 +36,7 @@ router.post('/url', function(req, res, next) {
             message: 'url is required'
         })
     }
+    if (url) url = !(url.startsWith('http://') || url.startsWith('https://')) ? 'http://' + url : url
 
     var regex = /^[\d]|\W/g
     var validate_url = validateUrl({ url: url })
