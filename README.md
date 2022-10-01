@@ -1,7 +1,7 @@
-# shorturl
-Url shortner
+# Shorturl
+Url Shortner using expressjs
 
 # Install & Run
-```
-npm i && npm start
+```bash
+$ npm i && npm start
 ```
