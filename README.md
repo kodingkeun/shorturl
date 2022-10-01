@@ -12,4 +12,4 @@ $ npm i
 ```shell
 $ npm start
 ```
-- Lalu buka url [localhost:8080](http://localhost:8080)
+- Lalu buka url [localhost:8000](http://localhost:8000)
