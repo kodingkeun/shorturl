@@ -80,7 +80,7 @@ $(document).ready(function() {
         contributors.forEach(user => {
             axios.get(`https://api.github.com/users/${user}`).then(({ data: { avatar_url, url, login, name } }) => {
                 axios.get('https://api.github.com/repos/kodingkeun/shorturl/commits').then(({ data: commits }) => {
-                    var { author, html_url, commit: { message }  } = commits.filter(v => v.author.login === login)[0]
+                    var { author, html_url, commit: { message }  } = commits.filter(user => user.author.login === login)[0]
                     var commit_data = `<a href="${html_url}" target="_blank">${message.split("\n")[0]}</a>`
                     var data = `<div class="media text-muted pt-3"><img src="${avatar_url}" class="bd-placeholder-img mr-2 rounded" width="32" height="32"><div class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray"><div class="d-flex justify-content-between align-items-center w-100"><strong class="text-gray-dark">${name || login} ${author.login === login ? commit_data : ""}</strong><a href="https://github.com/${login}" target="_blank">Follow</a></div><span class="d-block">@${login}</span></div></div>`
                     $('#contributors').append(data)
