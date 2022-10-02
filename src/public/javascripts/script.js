@@ -36,6 +36,7 @@ $(document).ready(function() {
              $('#error').hide()
              var { key, redirect_uri } = result
              $('#redirect_uri').val(`${window.location.href}${key}`)
+             $('#visit_redirect_uri').attr("href", `${window.location.href}${key}`)
 
              db.push({ key, redirect_uri })
              saveToLocalStorage(db)
