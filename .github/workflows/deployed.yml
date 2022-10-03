@@ -1,0 +1,58 @@
+name: 🚀 Deploy website on push
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+jobs:
+  web-deploy:
+    name: 🎉 Deploy
+    runs-on: ubuntu-latest
+    steps:
+    - name: 📂 Sync Files
+      uses: fifsky/ssh-action@master
+      with:
+        host: ${{ secrets.SSH_HOST }}
+        port: ${{ secrets.SSH_PORT }}
+        user: ${{ secrets.SSH_USER }}
+        pass: ${{ secrets.SSH_PASS }}
+        args: "-tt"
+        command: cd /home/kodingke/short.kodingkeun.com && git pull
+        
+    - name: ♻️ Restart Server...
+      uses: fifsky/ssh-action@master
+      with:
+        host: ${{ secrets.SSH_HOST }}
+        port: ${{ secrets.SSH_PORT }}
+        user: ${{ secrets.SSH_USER }}
+        pass: ${{ secrets.SSH_PASS }}
+        args: "-tt"
+        command: cd /home/kodingke/short.kodingkeun.com && touch tmp/restart.txt
+
+    - name: ✅ Telegram Notification Success
+      uses: appleboy/telegram-action@master
+      if: ${{ success() }}
+      with:
+          to: ${{ secrets.TELEGRAM_CHAT_ID }}
+          token: ${{ secrets.TELEGRAM_TOKEN }}
+          message: |
+            ✅ `berhasil` *${{ github.actor }}* trigger deployment
+            📩 Commit message: *${{ github.event.commits[0].message }}*
+            🧑‍💻 Developer: *${{github.actor}}*
+            🔗 See changes: [CEK APP](https://github.com/${{ github.repository }}/commit/${{github.sha}})
+          format: markdown
+          disable_web_page_preview: "True"
+
+    - name: ❌ Telegram Notification Failed
+      uses: appleboy/telegram-action@master
+      if: ${{ failure() }}
+      with:
+          to: ${{ secrets.TELEGRAM_CHAT_ID }}
+          token: ${{ secrets.TELEGRAM_TOKEN }}
+          message: |
+            ❌ `gagal` *${{ github.actor }}* trigger deployment
+            📩 Commit message: *${{ github.event.commits[0].message }}*
+            🧑‍💻 Developer: *${{github.actor}}*
+            🔗 See changes: [CEK APP](https://github.com/${{ github.repository }}/commit/${{github.sha}})
+          format: markdown
+          disable_web_page_preview: "True"
