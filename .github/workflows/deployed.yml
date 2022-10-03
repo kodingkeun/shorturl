@@ -15,7 +15,7 @@ jobs:
         host: ${{ secrets.SSH_HOST }}
         port: ${{ secrets.SSH_PORT }}
         user: ${{ secrets.SSH_USER }}
-        key: ${{ secrets.SSH_KEY }}
+        pass: ${{ secrets.SSH_PASS }}
         command: cd /home/kodingke/short.kodingkeun.com && git pull
 
     - name: ♻️ Restart Server...
@@ -24,7 +24,7 @@ jobs:
         host: ${{ secrets.SSH_HOST }}
         port: ${{ secrets.SSH_PORT }}
         user: ${{ secrets.SSH_USER }}
-        key: ${{ secrets.SSH_KEY }}
+        pass: ${{ secrets.SSH_PASS }}
         command: cd /home/kodingke/short.kodingkeun.com && touch tmp/restart.txt
 
     - name: ✅ Telegram Notification Success
