@@ -16,7 +16,7 @@ jobs:
         username: ${{ secrets.SSH_USER }}
         password: ${{ secrets.SSH_PASS }}
         port: ${{ secrets.SSH_PORT }}
-        script: cd /home/kodingke/short.kodingkeun.com && git pull origin main
+        script: cd /home/kodingke/short.kodingkeun.com && git restore src/database/database.json && git pull origin main
         
     - name: ♻️ Restart Server...
       uses: appleboy/ssh-action@master
