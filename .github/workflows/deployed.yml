@@ -17,21 +17,17 @@ jobs:
         user: ${{ secrets.SSH_USER }}
         pass: ${{ secrets.SSH_PASS }}
         args: "-tt"
-        command: |
-            cd /home/kodingke/short.kodingkeun.com
-            ls -a
-            cd /home/kodingke/short.kodingkeun.com && touch tmp/restart.txt
-            exit 1
+        command: cd /home/kodingke/short.kodingkeun.com && git pull
         
-    # - name: ♻️ Restart Server...
-    #   uses: fifsky/ssh-action@master
-    #   with:
-    #     host: ${{ secrets.SSH_HOST }}
-    #     port: ${{ secrets.SSH_PORT }}
-    #     user: ${{ secrets.SSH_USER }}
-    #     pass: ${{ secrets.SSH_PASS }}
-    #     args: "-tt"
-    #     command: cd /home/kodingke/short.kodingkeun.com && touch tmp/restart.txt
+    - name: ♻️ Restart Server...
+      uses: fifsky/ssh-action@master
+      with:
+        host: ${{ secrets.SSH_HOST }}
+        port: ${{ secrets.SSH_PORT }}
+        user: ${{ secrets.SSH_USER }}
+        pass: ${{ secrets.SSH_PASS }}
+        args: "-tt"
+        command: cd /home/kodingke/short.kodingkeun.com && touch tmp/restart.txt
 
     - name: ✅ Telegram Notification Success
       uses: appleboy/telegram-action@master
