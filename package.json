@@ -1,7 +1,7 @@
 {
-  "name": "shorturl2",
+  "name": "shorturl",
   "version": "1.0.0",
-  "private": true,
+  "private": false,
   "scripts": {
     "start": "node ./src/app"
   },
