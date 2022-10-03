@@ -1,0 +1,28 @@
+name: 🚀 Deploy website on push
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+jobs:
+  web-deploy:
+    name: 🎉 Deploy
+    runs-on: ubuntu-latest
+    steps:
+    - name: 📂 Sync Files
+      uses: fifsky/ssh-action@master
+      with:
+        host: ${{ secrets.SSH_HOST }}
+        port: ${{ secrets.SSH_PORT }}
+        user: ${{ secrets.SSH_USER }}
+        pass: ${{ secrets.SSH_PASS }}
+        command: cd /home/kodingke/short.kodingkeun.com && git pull
+
+    - name: ♻️ Restart Server...
+      uses: fifsky/ssh-action@master
+      with:
+        host: ${{ secrets.SSH_HOST }}
+        port: ${{ secrets.SSH_PORT }}
+        user: ${{ secrets.SSH_USER }}
+        pass: ${{ secrets.SSH_PASS }}
+        command: cd /home/kodingke/short.kodingkeun.com && touch tmp/restart.txt
