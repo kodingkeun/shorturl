@@ -16,25 +16,16 @@ jobs:
         username: ${{ secrets.SSH_USER }}
         password: ${{ secrets.SSH_PASS }}
         port: ${{ secrets.SSH_PORT }}
-        script: whoami
-
-    #   with:
-    #     host: ${{ secrets.SSH_HOST }}
-    #     port: ${{ secrets.SSH_PORT }}
-    #     user: ${{ secrets.SSH_USER }}
-    #     pass: ${{ secrets.SSH_PASS }}
-    #     args: "-tt"
-    #     command: cd /home/kodingke/short.kodingkeun.com && git pull
+        script: cd /home/kodingke/short.kodingkeun.com && git pull origin main
         
-    # - name: ♻️ Restart Server...
-    #   uses: fifsky/ssh-action@master
-    #   with:
-    #     host: ${{ secrets.SSH_HOST }}
-    #     port: ${{ secrets.SSH_PORT }}
-    #     user: ${{ secrets.SSH_USER }}
-    #     pass: ${{ secrets.SSH_PASS }}
-    #     args: "-tt"
-    #     command: cd /home/kodingke/short.kodingkeun.com && touch tmp/restart.txt
+    - name: ♻️ Restart Server...
+      uses: appleboy/ssh-action@master
+      with:
+        host: ${{ secrets.SSH_HOST }}
+        username: ${{ secrets.SSH_USER }}
+        password: ${{ secrets.SSH_PASS }}
+        port: ${{ secrets.SSH_PORT }}
+        script: cd /home/kodingke/short.kodingkeun.com && touch tmp/restart.txt
 
     - name: ✅ Telegram Notification Success
       uses: appleboy/telegram-action@master
