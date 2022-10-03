@@ -17,7 +17,7 @@ jobs:
         user: ${{ secrets.SSH_USER }}
         pass: ${{ secrets.SSH_PASS }}
         args: "-tt"
-        command: cd /home/kodingke/short.kodingkeun.com && git pull
+        command: cd /home/kodingke/short.kodingkeun.com
 
     - name: ♻️ Restart Server...
       uses: fifsky/ssh-action@master
