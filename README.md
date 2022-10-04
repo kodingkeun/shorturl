@@ -1,5 +1,5 @@
 # Shorturl
-Shorturl adalah alat untuk memperpendek url yang dikembangkan oleh komunitas [Koding Keun](http://kodingkeun.com). Shorturl menggunakan teknologi yang terdapat pada bahasa pemrogramman NodeJS yaitu [ExpressJS](https://expressjs.com).
+Shorturl adalah alat untuk memperpendek url yang dikembangkan oleh komunitas [Kodingkeun](http://kodingkeun.com). Shorturl menggunakan teknologi yang terdapat pada bahasa pemrogramman NodeJS yaitu [ExpressJS](https://expressjs.com).
 
 ## Cara pasang
 - Pertama anda perlu clone repostory ini ke dalam komputer anda
