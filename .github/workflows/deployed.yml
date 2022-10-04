@@ -16,7 +16,7 @@ jobs:
         username: ${{ secrets.SSH_USER }}
         password: ${{ secrets.SSH_PASS }}
         port: ${{ secrets.SSH_PORT }}
-        script: cd /home/kodingke/short.kodingkeun.com && git restore src/database/database.json && git pull origin main
+        script: cd /home/kodingke/shortkeun.xyz && git restore src/database/database.json && git pull origin main
         
     - name: ♻️ Restart Server...
       uses: appleboy/ssh-action@master
@@ -25,7 +25,7 @@ jobs:
         username: ${{ secrets.SSH_USER }}
         password: ${{ secrets.SSH_PASS }}
         port: ${{ secrets.SSH_PORT }}
-        script: cd /home/kodingke/short.kodingkeun.com && touch tmp/restart.txt
+        script: cd /home/kodingke/shortkeun.xyz && touch tmp/restart.txt
 
     - name: ✅ Telegram Notification Success
       uses: appleboy/telegram-action@master
