@@ -1,5 +1,6 @@
 # Shorturl
-Shorturl adalah alat untuk memperpendek url seperti bit.ly yang dikembangkan oleh komunitas [Koding Keun](http://kodingkeun.com). Shorturl menggunakan teknologi yang terdapat pada bahasa pemrogramman NodeJS yaitu [ExpressJS](https://expressjs.com) yang merupakan sebuah nodeJS frameworks.
+
+Shorturl adalah alat untuk memperpendek url seperti bit.ly yang dikembangkan oleh komunitas [Kodingkeun](https://kodingkeun.com). Shorturl menggunakan teknologi yang terdapat pada bahasa pemrogramman NodeJS yaitu [ExpressJS](https://expressjs.com).
 
 ## Cara pasang
 - Pertama anda perlu clone repostory ini ke dalam komputer anda
@@ -12,4 +13,4 @@ $ npm i
 ```shell
 $ npm start
 ```
-- Lalu buka url [localhost:8000](http://localhost:8000)
+- Lalu buka url: [localhost:8000](http://localhost:8000)
