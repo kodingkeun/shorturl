@@ -4,6 +4,7 @@ var path = require('path')
 var cookieParser = require('cookie-parser')
 var logger = require('morgan')
 var cors = require('cors')
+var limitter = require('express-rate-limit')
 
 var webRouter = require('./routes/web')
 var apiRouter = require('./routes/api')
@@ -12,11 +13,21 @@ var app = express()
 var PORT = process.env.PORT || 8000
 var server = app.listen(PORT)
 
+var limitRequest = limitter({
+  windowMs: 1 * 60 * 1000,
+  max: 20,
+  message: JSON.stringify({
+    message: 'to many request'
+  })
+})
+
 app.set('views', path.join(__dirname, 'views'))
 app.set('view engine', 'ejs')
 app.set('json spaces', 2)
 
 app.use(cors({ origin: '*' }))
+app.use(limitRequest)
+
 app.use(logger('dev'))
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
