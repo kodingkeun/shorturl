@@ -1,6 +1,6 @@
-# Shorturl
+# URL Shortener
 
-Shorturl adalah alat untuk memperpendek url seperti bit.ly yang dikembangkan oleh komunitas [Kodingkeun](https://kodingkeun.com). Shorturl menggunakan teknologi yang terdapat pada bahasa pemrogramman NodeJS yaitu [ExpressJS](https://expressjs.com).
+URL Shortener adalah alat untuk memperpendek url seperti bit.ly yang dikembangkan oleh komunitas [Kodingkeun](https://kodingkeun.com). URL Shortener menggunakan teknologi yang terdapat pada bahasa pemrogramman NodeJS yaitu [ExpressJS](https://expressjs.com).
 
 ## Cara pasang
 - Pertama anda perlu clone repostory ini ke dalam komputer anda
