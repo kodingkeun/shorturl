@@ -3,8 +3,9 @@
   "version": "1.0.0",
   "private": false,
   "scripts": {
-    "start": "node ./src/app"
-  },
+    "start": "node ./src/app production",
+    "dev": "node ./src/app dev"
+  }, 
   "dependencies": {
     "cookie-parser": "~1.4.4",
     "cors": "^2.8.5",
