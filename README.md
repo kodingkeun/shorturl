@@ -10,6 +10,13 @@ URL Shortener adalah alat untuk memperpendek url seperti bit.ly yang dikembangka
 $ npm i
 ```
 - Setelah anda memasang paket-paket yang dibutuhkan, silahkan jalankan menggunakan perintah berikut
+
+- mode development
+```shell
+$ npm run dev
+```
+
+- mode production
 ```shell
 $ npm start
 ```

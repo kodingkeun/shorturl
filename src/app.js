@@ -21,12 +21,23 @@ var limitRequest = limitter({
   })
 })
 
+
+var DEBUG
+if (process.argv[2] == 'dev') {
+  DEBUG = true
+} else {
+  DEBUG = false
+}
+
 app.set('views', path.join(__dirname, 'views'))
 app.set('view engine', 'ejs')
 app.set('json spaces', 2)
 
 app.use(cors({ origin: '*' }))
-app.use(limitRequest)
+
+if (!DEBUG) {
+  app.use(limitRequest)
+}
 
 app.use(logger('dev'))
 app.use(express.json())
