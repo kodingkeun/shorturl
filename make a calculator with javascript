@@ -1,0 +1,40 @@
+
+let nilai1 = document.getElementById('nilai1');
+let nilai2 = document.getElementById('nilai2');
+let tambah = document.getElementById('tambah');
+let kurang = document.getElementById('kurang');
+let kali = document.getElementById('kali');
+let bagi = document.getElementById('bagi');
+let hasil = document.getElementById('hasil');
+let reset = document.getElementById('reset');
+ 
+tambah.addEventListener('click', function(){
+	tambah = parseInt(nilai1.value) + parseInt(nilai2.value);
+	hasil.value = tambah;
+});
+ 
+kurang.addEventListener('click', function(){
+    kurang = parseInt(nilai1.value) - parseInt(nilai2.value);
+	hasil.value = kurang;    
+});
+ 
+kali.addEventListener('click', function(){
+   
+    kali = parseInt(nilai1.value) * parseInt(nilai2.value);
+	hasil.value = kali;
+});
+ 
+
+bagi.addEventListener('click', function(){
+    
+    bagi = parseInt(nilai1.value) / parseInt(nilai2.value);
+	hasil.value = bagi;
+});
+ 
+
+reset.addEventListener('click', function(){
+    
+        hasil.value = "";
+	nilai1.value = "";
+	nilai2.value = "";   
+});
