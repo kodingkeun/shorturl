@@ -21,3 +21,8 @@ $ npm run dev
 $ npm start
 ```
 - Lalu buka url: [localhost:8000](http://localhost:8000)
+
+## Screenshot
+<p align="center">
+    <img alt="home" src="https://raw.githubusercontent.com/kodingkeun/shorturl/main/src/public/images/screenshots/home.jpg"/><br/><br/>
+</p>
