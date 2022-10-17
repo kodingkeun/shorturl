@@ -72,7 +72,7 @@ $(document).ready(function () {
   db.reverse().forEach(({ key, redirect_uri }) => {
     var href = `${window.location.origin}/${key}`;
 
-    var data = `<div class="media text-muted pt-3"><div class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray"><div class="d-flex justify-content-between align-items-center w-100"><strong class="text-gray-dark">  ${redirect_uri}</strong><a href="${href}" target="_blank">Visit</a></div><span class="d-block">${href}</span></div></div>`;
+    var data = `<div class="media text-muted pt-3"><div class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray"><div class="d-flex justify-content-between align-items-center w-100"><strong class="text-gray-dark">  ${redirect_uri}</strong><a href="${href}" target="_blank" class="btn btn-outline-primary text-decoration-none"><i class="fa fa-external-link"></i> Visit</a></div><span class="d-block">${href}</span></div></div>`;
     $("#shortens").append(data);
   });
 
@@ -81,7 +81,7 @@ $(document).ready(function () {
     .forEach(({ key, redirect_uri }) => {
       var href = `${window.location.origin}/${key}`;
 
-      var data = `<div class="media text-muted pt-3"><div class="media-body pb-3 mb-0 medium lh-125 border-bottom border-gray"><div class="d-flex justify-content-between align-items-center w-100"><strong class="text-gray-dark" > ${redirect_uri}</strong><a href="${href}" target="_blank" class="btn btn-outline-primary text-decoration-none" > <i class="fa fa-external-link"></i> Visit</a></div><span class="d-block">${href}</span></div></div>`;
+      var data = `<div class="media text-muted pt-3"><div class="media-body pb-3 mb-0 medium lh-125 border-bottom border-gray"><div class="d-flex justify-content-between align-items-center w-100"><strong class="text-gray-dark" > ${redirect_uri}</strong><a href="${href}" target="_blank" class="btn btn-outline-primary text-decoration-none"><i class="fa fa-external-link"></i> Visit</a></div><span class="d-block">${href}</span></div></div>`;
       $("#recent_shortens").append(data);
     });
 
