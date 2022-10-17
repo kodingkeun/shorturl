@@ -1,10 +1,11 @@
 var express = require('express')
 var fs = require('fs')
 var router = express.Router()
+var path = require('path')
 
 var { cwd }  = process
 
-var pathDB = (cwd() + '/src/database/database.json')
+var pathDB = path.join(cwd(),'src', 'database', 'database.json')
 var db = fs.readFileSync(pathDB, 'utf-8') || '[]'
 db = JSON.parse(db)
 
