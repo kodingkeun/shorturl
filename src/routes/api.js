@@ -2,11 +2,13 @@ var express = require('express')
 var fs = require('fs')
 var crypto = require('crypto')
 var router = express.Router()
+var path = require('path')
 
 var { cwd }  = process
 
-var pathDB = (cwd() + '/src/database/database.json')
-var pathContributors = (cwd() + '/src/database/contributors.json')
+var pathDB = path.join(cwd(), 'src', 'database', 'database.json')
+var pathContributors = path.join(cwd(), 'src', 'database', 'contributors.json')
+
 var db = fs.readFileSync(pathDB, 'utf-8') || '[]'
 var contributors = fs.readFileSync(pathContributors, 'utf-8') || '[]'
 db = JSON.parse(db)
