@@ -4,7 +4,9 @@
   "private": false,
   "scripts": {
     "start": "node ./src/app production",
-    "dev": "node ./src/app dev"
+    "dev": "node ./src/app dev",
+    "test": "jest --coverage --runInBand --watchAll=true -- __test__/router.test.js",
+    "coverage": "jest --maxWorkers=4 --coverage"
   }, 
   "dependencies": {
     "cookie-parser": "~1.4.4",
