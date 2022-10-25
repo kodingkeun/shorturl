@@ -1,5 +1,5 @@
 const request = require('supertest')
-const server = require('../src/server')
+const server = require('../src/app')
 
 beforeAll(() => {
   jest.setTimeout(100*1000)
@@ -16,7 +16,7 @@ describe('Route /api/v1', () => {
         done()
       })
   })
-
+  
   it("Should return a HTTP status code 200 in endpoint /contributors", (done) => {
     request(server)
       .get('/contributors')
