@@ -11,15 +11,15 @@ $ npm i
 ```
 - Setelah anda memasang paket-paket yang dibutuhkan, silahkan jalankan menggunakan perintah berikut
 
-- mode development
-```shell
-$ npm run dev
-```
+    - mode development
+    ```shell
+    $ npm run dev
+    ```
 
-- mode production
-```shell
-$ npm start
-```
+    - mode production
+    ```shell
+    $ npm start
+    ```
 - Lalu buka url: [localhost:8000](http://localhost:8000)
 
 ## Screenshot
